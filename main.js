@@ -42,9 +42,13 @@ var coffeeShop = {
     console.log(this.beans);
   },
   buyDrink: function (drinkType) {
-    this.money += this.Price[drinkType];
+    
+    //TODO: make sure there is enough beans to add the money
+    if(this.beans > this.drinkRequirements[drinkType] ){
+      this.makeDrink(drinkType) ;
+      this.money += this.Price[drinkType];
+    } 
     console.log(this.money);
-    this.makeDrink(drinkType) ;
   }
 }
 
@@ -62,13 +66,3 @@ coffeeShop.buySupplies(5);
 coffeeShop.buyDrink("frenchPress");
 coffeeShop.buyDrink("latte");
 
-//The problem is it takes you the money even tho you don't have enough beans GRRRRRRRRRRRRRRRRR
-
-
-    /*    if (this.beans > this.drinkRequirements[drinkType]) {
-      this.money += this.Price[drinkType];
-      console.log(this.money);
-    } else if (this.beans < this.drinkRequirements[drinkType]) {
-       console.log(this.money);
-       alert("sorry not enough beans to make your drink");
-    } */
